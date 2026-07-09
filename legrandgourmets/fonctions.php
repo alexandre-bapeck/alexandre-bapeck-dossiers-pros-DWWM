@@ -17,11 +17,25 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// URL de base du site (détectée automatiquement à partir du nom du dossier)
+// URL de base du site (détectée automatiquement).
+// On calcule le chemin web du dossier de l'application à partir de sa position
+// réelle sous la racine du serveur. basename(__DIR__) ne suffirait pas : il ne
+// garde que le dernier dossier et perdrait les dossiers parents.
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http';
 $host     = $_SERVER['HTTP_HOST'];
-$dossier  = basename(__DIR__); // "legrandgourmet"
-define('BASE_URL', $protocol . '://' . $host . '/' . $dossier);
+
+$racine  = str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT']));
+$courant = str_replace('\\', '/', __DIR__);
+
+if ($racine !== '' && strpos($courant, $racine) === 0) {
+    // ex: "/legrandgourmet/legrandgourmets"
+    $dossier = rtrim(substr($courant, strlen($racine)), '/');
+} else {
+    // Repli si le dossier est hors DOCUMENT_ROOT (alias Apache, lien symbolique...)
+    $dossier = '/' . basename(__DIR__);
+}
+
+define('BASE_URL', $protocol . '://' . $host . $dossier);
 
 /** Construit une URL interne (ex: url('recettes') => /legrandgourmet/recettes.php). */
 function url($page = '')

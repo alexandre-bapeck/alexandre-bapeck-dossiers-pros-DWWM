@@ -106,7 +106,9 @@ Le projet est développé en **PHP natif, sans framework**. C'est un choix assum
 
    puis renseigner les identifiants [Mailtrap](https://mailtrap.io).
 
-6. **Ouvrir le site** dans le navigateur.
+6. **Ouvrir le site** : [http://localhost/legrandgourmet/legrandgourmets/](http://localhost/legrandgourmet/legrandgourmets/)
+
+   > L'application vit dans le sous-dossier `legrandgourmets/` du dépôt. La constante `BASE_URL` détecte ce chemin automatiquement ; en revanche `ErrorDocument` dans `.htaccess` est en dur : si vous déplacez l'application, pensez à l'ajuster.
 
 ### 🔑 Premier compte administrateur
 

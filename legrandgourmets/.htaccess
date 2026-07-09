@@ -1,8 +1,8 @@
 # Page d'accueil par défaut
 DirectoryIndex index.php
 
-# Page d'erreur 404
-ErrorDocument 404 /legrandgourmet/404.php
+# Page d'erreur 404 (chemin depuis la racine du serveur web)
+ErrorDocument 404 /legrandgourmet/legrandgourmets/404.php
 
 # Redirection optionnelle si on enlève le .php
 RewriteEngine On
