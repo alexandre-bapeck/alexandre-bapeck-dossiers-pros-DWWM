@@ -1,0 +1,306 @@
+/* ============================================================
+    LE GRAND GOURMET — Animations & Effets visuels
+   ============================================================ */
+
+/* ---- KEYFRAMES ------------------------------------------ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(.3); }
+  50%  { opacity: 1; transform: scale(1.08); }
+  70%  { transform: scale(.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideInBar {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes heartBeat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.35); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.25); }
+  70%  { transform: scale(1); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ---- PAGE LOADER ---------------------------------------- */
+#page-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0D0D0D;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 1.2rem;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+#page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; color: #E8B84B;
+}
+.loader-bar {
+  width: 180px; height: 3px;
+  background: rgba(255,255,255,.1);
+  border-radius: 99px; overflow: hidden;
+}
+.loader-bar-inner {
+  height: 100%;
+  background: linear-gradient(135deg, #E8B84B, #F5D27A);
+  border-radius: 99px;
+  animation: slideInBar 1.2s ease-out forwards;
+}
+
+/* ---- SCROLL ANIMATIONS ---------------------------------- */
+.anim {
+  opacity: 0;
+  transition: opacity .6s ease, transform .6s ease;
+}
+.anim.anim-up    { transform: translateY(30px); }
+.anim.anim-down  { transform: translateY(-20px); }
+.anim.anim-left  { transform: translateX(-30px); }
+.anim.anim-right { transform: translateX(30px); }
+.anim.anim-zoom  { transform: scale(.88); }
+
+.anim.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Délais d'entrée en cascade */
+.anim-delay-1 { transition-delay: .1s; }
+.anim-delay-2 { transition-delay: .2s; }
+.anim-delay-3 { transition-delay: .3s; }
+.anim-delay-4 { transition-delay: .4s; }
+.anim-delay-5 { transition-delay: .5s; }
+.anim-delay-6 { transition-delay: .6s; }
+
+/* ---- NAVBAR SCROLL EFFECT ------------------------------- */
+.navbar.scrolled {
+  box-shadow: 0 4px 30px rgba(0,0,0,.6);
+  backdrop-filter: blur(12px);
+}
+.navbar { transition: box-shadow .3s, background .3s; }
+
+/* ---- HERO ANIMATIONS ------------------------------------ */
+.hero-badge   { animation: fadeInDown .6s ease .2s both; }
+.hero-content h1 { animation: fadeInUp  .7s ease .3s both; }
+.hero-content p  { animation: fadeInUp  .7s ease .45s both; }
+.hero-meta       { animation: fadeInUp  .7s ease .55s both; }
+.btn-hero        { animation: fadeInUp  .7s ease .65s both; }
+
+/* ---- CARDS HOVER EFFECTS -------------------------------- */
+.recipe-card {
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.recipe-card:hover .recipe-card-img {
+  transform: scale(1.04);
+  transition: transform .4s ease;
+}
+.recipe-card-img { overflow: hidden; transition: transform .4s ease; }
+
+/* ---- CATÉGORIES ---------------------------------------- */
+.category-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.category-icon { display: inline-block; transition: transform .3s ease; }
+.category-card:hover .category-icon { animation: floatY .6s ease infinite; }
+
+/* ---- BOUTON FAVORI -------------------------------------- */
+.btn-favori.active { animation: heartBeat .6s ease; }
+
+/* ---- SKELETON LOADER ------------------------------------ */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 8px;
+}
+.skeleton-card {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  border: 1px solid #E5E7EB;
+}
+.skeleton-img  { height: 220px; }
+.skeleton-line { height: 14px; margin: 8px 16px; }
+.skeleton-line.short { width: 60%; }
+.skeleton-line.medium { width: 80%; }
+
+/* ---- KPI COUNTER ANIMATION ------------------------------ */
+.kpi-value { animation: countUp .5s ease both; }
+.kpi-card:nth-child(1) .kpi-value { animation-delay: .1s; }
+.kpi-card:nth-child(2) .kpi-value { animation-delay: .2s; }
+.kpi-card:nth-child(3) .kpi-value { animation-delay: .3s; }
+.kpi-card:nth-child(4) .kpi-value { animation-delay: .4s; }
+
+/* ---- RIPPLE EFFECT SUR LES BOUTONS ---------------------- */
+.btn { position: relative; overflow: hidden; }
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  transform: scale(0);
+  animation: ripple .55s linear;
+  pointer-events: none;
+}
+
+/* ---- FLASH MESSAGE SLIDE -------------------------------- */
+.alert { animation: fadeInDown .4s ease both; }
+
+/* ---- STEP NUMBERS --------------------------------------- */
+.instruction-step { animation: fadeInLeft .5s ease both; }
+.instruction-step:nth-child(1) { animation-delay: .05s; }
+.instruction-step:nth-child(2) { animation-delay: .12s; }
+.instruction-step:nth-child(3) { animation-delay: .19s; }
+.instruction-step:nth-child(4) { animation-delay: .26s; }
+.instruction-step:nth-child(5) { animation-delay: .33s; }
+.instruction-step:nth-child(6) { animation-delay: .40s; }
+.instruction-step:nth-child(7) { animation-delay: .47s; }
+
+/* ---- MODAL ANIMÉE --------------------------------------- */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s, visibility .3s;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal-box {
+  background: #fff; border-radius: 20px;
+  padding: 2rem; max-width: 480px; width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  transform: scale(.9) translateY(20px);
+  transition: transform .3s ease;
+}
+.modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+.modal-close { float: right; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #9CA3AF; }
+.modal-close:hover { color: #111; }
+
+/* ---- TOAST NOTIFICATION --------------------------------- */
+#toast-container {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  z-index: 999; display: flex; flex-direction: column; gap: .6rem;
+}
+.toast {
+  background: #111827; color: #fff;
+  padding: .85rem 1.3rem; border-radius: 12px;
+  font-size: .88rem; font-weight: 500;
+  box-shadow: 0 8px 30px rgba(0,0,0,.3);
+  display: flex; align-items: center; gap: .6rem;
+  animation: fadeInRight .35s ease both;
+  border-left: 4px solid #E8B84B;
+  max-width: 320px;
+}
+.toast.success { border-left-color: #10B981; }
+.toast.error   { border-left-color: #EF4444; }
+.toast.hiding  { animation: fadeInRight .3s ease reverse both; }
+
+/* ---- PROGRESS BAR EN HAUT ------------------------------- */
+#progress-bar {
+  position: fixed; top: 0; left: 0; z-index: 200;
+  height: 3px; width: 0%;
+  background: linear-gradient(135deg, #E8B84B, #F5D27A);
+  transition: width .2s ease;
+  box-shadow: 0 0 8px rgba(232,184,75,.5);
+}
+
+/* ---- SMOOTH IMAGE LOAD ---------------------------------- */
+.recipe-card-img, .recipe-hero-img {
+  background-color: #F3F4F6;
+}
+
+/* ---- SCROLL TO TOP BUTTON ------------------------------- */
+#scroll-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+  width: 44px; height: 44px;
+  background: #0D0D0D; color: #E8B84B;
+  border: none; border-radius: 50%;
+  font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s, visibility .3s, transform .3s;
+}
+#scroll-top.visible { opacity: 1; visibility: visible; }
+#scroll-top:hover { transform: translateY(-3px); background: #E8B84B; color: #0D0D0D; }
+
+/* ---- TABLE ROWS ANIMATION (admin) ----------------------- */
+.admin-table tbody tr {
+  animation: fadeInUp .3s ease both;
+}
+.admin-table tbody tr:nth-child(1) { animation-delay: .04s; }
+.admin-table tbody tr:nth-child(2) { animation-delay: .08s; }
+.admin-table tbody tr:nth-child(3) { animation-delay: .12s; }
+.admin-table tbody tr:nth-child(4) { animation-delay: .16s; }
+.admin-table tbody tr:nth-child(5) { animation-delay: .20s; }
+
+/* ---- HOVER GLOW SUR LES INPUTS -------------------------- */
+.form-control:focus {
+  animation: none;
+}
+
+/* ---- DISABLE ANIMATIONS (accessibilité) ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  #page-loader { display: none !important; }
+}

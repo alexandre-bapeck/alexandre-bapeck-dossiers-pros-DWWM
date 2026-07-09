@@ -1,0 +1,15 @@
+# Dépendances Composer (réinstallables via "composer install")
+/vendor/
+composer.phar
+
+# Secrets — ne JAMAIS versionner (on versionne seulement .env.example)
+.env
+
+# Logs et fichiers générés
+assets/emails/log.txt
+
+# Fichiers système / éditeurs
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

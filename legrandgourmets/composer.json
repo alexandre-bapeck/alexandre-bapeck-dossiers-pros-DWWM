@@ -1,0 +1,7 @@
+{
+    "name": "bapeck/legrandgourmet",
+    "description": "Site de recettes LE GRAND GOURMET - projet DWWM",
+    "require": {
+        "phpmailer/phpmailer": "^7.1"
+    }
+}

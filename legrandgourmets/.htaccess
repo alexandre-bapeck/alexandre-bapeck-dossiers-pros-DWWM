@@ -1,0 +1,11 @@
+# Page d'accueil par défaut
+DirectoryIndex index.php
+
+# Page d'erreur 404
+ErrorDocument 404 /legrandgourmet/404.php
+
+# Redirection optionnelle si on enlève le .php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
